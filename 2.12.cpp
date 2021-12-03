@@ -16,6 +16,7 @@ double sum1(double x) {
 		s += (a - b);
 		n++;
 	}
+	cout <<endl<<"Сумма первоначального ряда: " << s << "\n";
 	return n;
 }
 
@@ -30,6 +31,7 @@ double sum2(double x) {
 		s += a;
 		n++;
 	}
+	cout << "Сумма преобразованного ряда: " << s << "\n";
 	return n;
 }
 
@@ -37,9 +39,10 @@ int main()
 {
 	setlocale(0, "");
 	double x;
+	cout << "Введите x: ";
 	cin >> x;
-	cout <<"Кол-во итераций для первоначального ряда: "<< sum1(x) << endl;
-	cout <<"Кол-во итераций для преобразованного ряда: "<< sum2(x) << endl;
+	cout << "Кол-во итераций для первоначального ряда: " << sum1(x) << endl<<endl;
+	cout << "Кол-во итераций для преобразованного ряда: " << sum2(x) << endl;
 	system("pause");
 	return 0;
 }
