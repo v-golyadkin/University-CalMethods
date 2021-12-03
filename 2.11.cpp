@@ -1,44 +1,51 @@
 #include "stdafx.h"
 #include <iostream>
 #include <math.h>
-const double eps = 1e-6;
+
 using namespace std;
+
+double eps = 0.5 * 1e-8;
+double n1;
+double n2;
 
 double sum1(double x) {
 	double s = 1; //сумма
-	double n = 1; // конечный член
+	n1 = 1; // конечный член
 	double a = 1; // первый член
-	double b = 1;
 	while (true) {
-		a = 1 / (n * (n + x));
+		a = 1 / (n1 * (n1 + x));
 		if (abs(a) <= eps) break;
 		s += a;
-		n++;
+		n1++;
 	}
-	return n;
+
+	return s;
 }
 
 double sum2(double x) {
 	double s = 1; //сумма
-	double n = 1; // конечный член
+	n2 = 1; // конечный член
 	double a = 1; // первый член
-	double b = 1;
 	while (true) {
-		a = 1 / (n * (n + x) * (n + 1));
+		a = 1 / (n2 * (n2 + x) * (n2 + 1));
 		if (abs(a) <= eps) break;
 		s += a;
-		n++;
+		n2++;
 	}
-	return n;
+	s *= (1 - x);
+	s += sum1(1);
+
+	return s;
 }
 
 int main()
 {
-	setlocale(0, "");
-	double x;
-	cin >> x;
-	cout <<"Кол-во итераций для первоначального ряда: "<< sum1(x) << endl;
-	cout <<"Кол-во итераций для преобразованного ряда: "<< sum2(x) << endl;
+	double n = 0;
+	cout << "x\tsum1\tsum2\titr1\titr2\n";
+	for (double x = 0.0; x < 1.0; x += 0.1) {
+		n += sum1(x);
+		cout << x << "\t" << sum1(x) << "\t" << sum2(x) << "\t" << n1 << "\t" << n2 << "\n";
+	}
 	system("pause");
 	return 0;
 }
