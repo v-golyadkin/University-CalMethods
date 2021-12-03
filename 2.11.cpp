@@ -1,16 +1,16 @@
 #include "stdafx.h"
 #include <iostream>
 #include <math.h>
-
+const double eps = 1e-6;
 using namespace std;
 
-double sum1(double x, double eps) {
+double sum1(double x) {
 	double s = 1; //сумма
 	double n = 1; // конечный член
 	double a = 1; // первый член
 	double b = 1;
 	while (true) {
-		a = 1 / (n*(n + x));
+		a = 1 / (n * (n + x));
 		if (abs(a) <= eps) break;
 		s += a;
 		n++;
@@ -18,13 +18,13 @@ double sum1(double x, double eps) {
 	return n;
 }
 
-double sum2(double x, double eps) {
+double sum2(double x) {
 	double s = 1; //сумма
 	double n = 1; // конечный член
 	double a = 1; // первый член
 	double b = 1;
 	while (true) {
-		a = 1 / (n*(n + x)*(n + 1));
+		a = 1 / (n * (n + x) * (n + 1));
 		if (abs(a) <= eps) break;
 		s += a;
 		n++;
@@ -36,8 +36,8 @@ int main()
 {
 	double x;
 	cin >> x;
-	cout << sum1(x, 1e-6) << endl;
-	cout << sum2(x, 1e-6) << endl;
+	cout << sum1(x) << endl;
+	cout << sum2(x) << endl;
 	system("pause");
 	return 0;
 }
