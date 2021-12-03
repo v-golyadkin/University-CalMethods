@@ -34,10 +34,11 @@ double sum2(double x) {
 
 int main()
 {
+	setlocale(0, "");
 	double x;
 	cin >> x;
-	cout << sum1(x) << endl;
-	cout << sum2(x) << endl;
+	cout <<"Кол-во итераций для первоначального ряда: "<< sum1(x) << endl;
+	cout <<"Кол-во итераций для преобразованного ряда: "<< sum2(x) << endl;
 	system("pause");
 	return 0;
 }
